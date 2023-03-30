@@ -1,3 +1,19 @@
+const mysql = require('mysql');
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'ventas'
+});
+
+connection.connect((error) => {
+  if (error) {
+    console.log('Error al conectarse a la base de datos:', error);
+  } else {
+    console.log('Conexión exitosa a la base de datos');
+  }
+});
+
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
