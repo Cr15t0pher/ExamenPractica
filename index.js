@@ -39,6 +39,15 @@ app.get('/ventas/:id', (req, res) => {
     });
   });
 
+  // Crear un nuevo registro
+app.post('/ventas', (req, res) => {
+    const {empleado,cliente,fecha,producto,total } = req.body;
+    connection.query(`INSERT INTO venta (empleado,cliente,fecha,producto,total) VALUES ('${empleado}','${cliente}','${fecha}','${producto}', '${total}')`, (error, results) => {
+      if (error) throw error;
+      res.send('Registro creado exitosamente');
+    });
+  });
+
 
 app.listen(3000, () => {
   console.log('API escuchando en el puerto 3000');
