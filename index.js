@@ -48,6 +48,19 @@ app.post('/ventas', (req, res) => {
     });
   });
 
+  // Actualizar un registro existente
+app.put('/ventas/:id', (req, res) => {
+    const { id } = req.params;
+    const { empleado,cliente,fecha,producto,total } = req.body;
+    connection.query(`UPDATE venta SET empleado='${empleado}', cliente='${cliente}', fecha='${fecha}', 
+    producto='${producto}', total='${total}' WHERE id=${id}`, (error, results) => {
+      if (error) throw error;
+      res.send('Registro actualizado exitosamente');
+    });
+  });
+
+
+
 
 app.listen(3000, () => {
   console.log('API escuchando en el puerto 3000');
