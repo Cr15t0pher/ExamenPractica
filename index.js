@@ -59,6 +59,15 @@ app.put('/ventas/:id', (req, res) => {
     });
   });
 
+  // Eliminar un registro existente
+app.delete('/ventas/:id', (req, res) => {
+    const { id } = req.params;
+    connection.query(`DELETE FROM venta WHERE id=${id}`, (error, results) => {
+      if (error) throw error;
+      res.send('Venta eliminada exitosamente');
+    });
+  });
+
 
 
 
