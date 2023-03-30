@@ -22,6 +22,14 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+// Leer todos los registros
+app.get('/ventas', (req, res) => {
+    connection.query('SELECT * FROM venta', (error, results) => {
+      if (error) throw error;
+      res.send(results);
+    });
+  });
+
 
 app.listen(3000, () => {
   console.log('API escuchando en el puerto 3000');
